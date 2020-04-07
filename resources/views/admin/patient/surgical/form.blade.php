@@ -1,3 +1,5 @@
+<div>
+
 <div class="form-group {{ ($errors->has('date_of_surgery')) ? 'has-error' : '' }} required">
     {!! Form::label('date_of_surgery', 'Date of Surgery', ['class' => 'col-md-2 control-label']) !!}
     <div class="col-md-4">
@@ -18,13 +20,23 @@
     </div>
 </div>
 
+
 <div class="form-group {{ ($errors->has('surgery')) ? 'has-error' : '' }} required">
+    {!! Form::label('surgery', 'Name of the surgery', ['class' => 'col-md-2 control-label']) !!}
+    <div class="col-md-10">
+        <select clas="form-control" name="surgery[]" multiple id="mySelect">Choose Surgery</select>
+        <p class="help-block">{{ ($errors->has('surgery') ? $errors->first('surgery') : '') }}</p>
+    </div>
+</div>
+          
+
+<!-- <div class="form-group {{ ($errors->has('surgery')) ? 'has-error' : '' }} required">
     {!! Form::label('surgery', 'Name of the surgery', ['class' => 'col-md-2 control-label']) !!}
     <div class="col-md-10">
         {!! Form::text('surgery', null, ['class' => 'form-control', 'placeholder' => 'Surgery']) !!}
         <p class="help-block">{{ ($errors->has('surgery') ? $errors->first('surgery') : '') }}</p>
     </div>
-</div>
+</div> -->
 
 
 <div class="form-group {{ ($errors->has('operative_notes')) ? 'has-error' : '' }}">
@@ -115,8 +127,10 @@
     </div>
 </div>
 
+</div>
 @section('script')
     <script>
+
         $(document).ready(function () {
 
            $('.ui.dropdown')
@@ -136,16 +150,23 @@
             
 
 
-
             $('#surgery_sub_category').change(function(e) {
               console.log(e.target.value); 
                 var sub_surgery = e.target.value;
                 var surgery = _.where(surgerysubcategory, {sub_surgery: sub_surgery});
                surgery = surgery ? surgery[0].surgery : '';
-               $('#surgery').val(surgery);
+               // $('#surgery').val(surgery);
 
-            
-            });
+                var surgeries = surgery ? JSON.parse(surgery) : [];
+                $.each(surgeries, function(key, value) {   
+                    $('#mySelect')
+                            .append($("<option></option>")
+                            .attr("value",value)
+                            .text(value)); 
+                    });
+                });
         });
+
+  
     </script>
 @endsection

@@ -60,9 +60,8 @@ class SubSurgeryController extends Controller
     public function update(Request $request)
     {
         $subSurgery = SubSurgery::firstOrCreate(['sub_surgery' => $request->sub_surgery]);
-        $surgery[] = $request->surgery;
-        $surgery[] = json_decode($subSurgery->surgery,true);
-        $surgery_merge = json_encode(array_unique($surgery));
+        $surgery = $subSurgery->surgery ? json_decode($subSurgery->surgery,true) : [];
+        $surgery_merge = json_encode(array_unique(array_merge($surgery, $request->surgery)));
         $subSurgery->surgery = $surgery_merge;
         $subSurgery->save();
         return redirect()->route('subsurgery.index')->with('message', 'SubSurgery was successfully updated!');

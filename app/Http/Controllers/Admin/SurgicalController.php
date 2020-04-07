@@ -56,7 +56,7 @@ class SurgicalController extends Controller
         }
 
         $surgical->description = $request->description;
-        $surgical->surgery = $request->surgery;
+        $surgical->surgery = json_encode($request->surgery);
         $surgical->complication = $request->complication;
         $surgical->date_of_review = $request->date_of_review;
         $surgical->save();
@@ -199,7 +199,7 @@ class SurgicalController extends Controller
         }
         
         $surgical->description = $request->description;
-        $surgical->surgery = $request->surgery;
+        $surgical->surgery = json_encode($request->surgery);
         $surgical->complication = $request->complication;
         $surgical->date_of_review = $request->date_of_review;
         $surgical->save();

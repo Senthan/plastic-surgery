@@ -15,7 +15,7 @@ class CreateSurgicalsTable extends Migration
         Schema::create('surgicals', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('patient_id');
-            $table->string('surgery')->nullable()->default(null);
+            $table->text('surgery')->nullable()->default(null);
             $table->string('traneximic')->nullable()->default(null);
             $table->string('methlene')->nullable()->default(null);
             $table->string('operative_notes')->nullable()->default(null);
