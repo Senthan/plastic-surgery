@@ -14,6 +14,12 @@
             <span class="pull-left"><h4>Edit Surgical</h4></span>
             <span class="pull-right">
                 <a class="ui small button" href="{{ route('surgical.index', ['patient' => $patient->id]) }}">Back</a>
+                    <a ng-href="{{ route('subsurgery.index') }}" class="button ui big blue labeled icon">
+                <i class="icon list"></i>Add subsurgery
+            </a>  
+                                        <a ng-href="{{ route('drug.index') }}" class="button ui big blue labeled icon">
+                <i class="icon list"></i>Add surgery
+            </a>  
             </span>
         </div>
         <div class="panel-body">

@@ -62,6 +62,9 @@ class SurgicalController extends Controller
         $surgical->save();
 
 
+try {
+
+
         $file = request()->file('learning_points');
         //dd(!isset($file), isset($file), $file);
 
@@ -69,8 +72,9 @@ class SurgicalController extends Controller
         $extension = strtolower($file->getClientOriginalExtension());
             $mediaItems = $surgical->getMedia()->count() + 1;
             $filename = $patient_uuid . "_". $mediaItems;
+            $filename = str_replace("/", "", $filename);
             $file->move(public_path('media/'),$filename . '.' . $extension);
-        
+
         $pathToFile  =  public_path('media/').$filename . '.' . $extension;
         $surgical->addMedia($pathToFile)->toCollection('learning_points');
                  //->toMediaLibrary();
@@ -85,6 +89,7 @@ class SurgicalController extends Controller
         $extension = strtolower($file->getClientOriginalExtension());
             $mediaItems = $surgical->getMedia()->count() + 1;
             $filename = $patient_uuid . "_". $mediaItems;
+            $filename = str_replace("/", "", $filename);
             $file->move(public_path('media/'),$filename . '.' . $extension);
         
         $pathToFile  =  public_path('media/').$filename . '.' . $extension;
@@ -100,6 +105,7 @@ class SurgicalController extends Controller
         $extension = strtolower($file->getClientOriginalExtension());
             $mediaItems = $surgical->getMedia()->count() + 1;
             $filename = $patient_uuid . "_". $mediaItems;
+            $filename = str_replace("/", "", $filename);
             $file->move(public_path('media/'),$filename . '.' . $extension);
         
         $pathToFile  =  public_path('media/').$filename . '.' . $extension;
@@ -115,6 +121,7 @@ class SurgicalController extends Controller
         $extension = strtolower($file->getClientOriginalExtension());
             $mediaItems = $surgical->getMedia()->count() + 1;
             $filename = $patient_uuid . "_". $mediaItems;
+            $filename = str_replace("/", "", $filename);
             $file->move(public_path('media/'),$filename . '.' . $extension);
         
         $pathToFile  =  public_path('media/').$filename . '.' . $extension;
@@ -130,6 +137,7 @@ class SurgicalController extends Controller
         $extension = strtolower($file->getClientOriginalExtension());
             $mediaItems = $surgical->getMedia()->count() + 1;
             $filename = $patient_uuid . "_". $mediaItems;
+            $filename = str_replace("/", "", $filename);
             $file->move(public_path('media/'),$filename . '.' . $extension);
         
         $pathToFile  =  public_path('media/').$filename . '.' . $extension;
@@ -144,12 +152,17 @@ class SurgicalController extends Controller
         $extension = strtolower($file->getClientOriginalExtension());
             $mediaItems = $surgical->getMedia()->count() + 1;
             $filename = $patient_uuid . "_". $mediaItems;
+            $filename = str_replace("/", "", $filename);
             $file->move(public_path('media/'),$filename . '.' . $extension);
         
         $pathToFile  =  public_path('media/').$filename . '.' . $extension;
         $surgical->addMedia($pathToFile)->toCollection('follow_up_images');
                  //->toMediaLibrary();
         }
+
+        } catch(Exception $e) {
+
+}
 
         return redirect()->route('surgical.index', ['patient' => $patient]);
     }
@@ -204,6 +217,8 @@ class SurgicalController extends Controller
         $surgical->date_of_review = $request->date_of_review;
         $surgical->save();
 
+try {
+
         $file = request()->file('learning_points');
         //dd(!isset($file), isset($file), $file);
 
@@ -211,6 +226,7 @@ class SurgicalController extends Controller
         $extension = strtolower($file->getClientOriginalExtension());
             $mediaItems = $surgical->getMedia()->count() + 1;
             $filename = $patient_uuid . "_". $mediaItems;
+            $filename = str_replace("/", "", $filename);
             $file->move(public_path('media/'),$filename . '.' . $extension);
         
         $pathToFile  =  public_path('media/').$filename . '.' . $extension;
@@ -226,6 +242,7 @@ class SurgicalController extends Controller
         $extension = strtolower($file->getClientOriginalExtension());
             $mediaItems = $surgical->getMedia()->count() + 1;
             $filename = $patient_uuid . "_". $mediaItems;
+            $filename = str_replace("/", "", $filename);
             $file->move(public_path('media/'),$filename . '.' . $extension);
         
         $pathToFile  =  public_path('media/').$filename . '.' . $extension;
@@ -241,6 +258,7 @@ class SurgicalController extends Controller
         $extension = strtolower($file->getClientOriginalExtension());
             $mediaItems = $surgical->getMedia()->count() + 1;
             $filename = $patient_uuid . "_". $mediaItems;
+            $filename = str_replace("/", "", $filename);
             $file->move(public_path('media/'),$filename . '.' . $extension);
         
         $pathToFile  =  public_path('media/').$filename . '.' . $extension;
@@ -256,6 +274,7 @@ class SurgicalController extends Controller
         $extension = strtolower($file->getClientOriginalExtension());
             $mediaItems = $surgical->getMedia()->count() + 1;
             $filename = $patient_uuid . "_". $mediaItems;
+            $filename = str_replace("/", "", $filename);
             $file->move(public_path('media/'),$filename . '.' . $extension);
         
         $pathToFile  =  public_path('media/').$filename . '.' . $extension;
@@ -271,6 +290,7 @@ class SurgicalController extends Controller
         $extension = strtolower($file->getClientOriginalExtension());
             $mediaItems = $surgical->getMedia()->count() + 1;
             $filename = $patient_uuid . "_". $mediaItems;
+            $filename = str_replace("/", "", $filename);
             $file->move(public_path('media/'),$filename . '.' . $extension);
         
         $pathToFile  =  public_path('media/').$filename . '.' . $extension;
@@ -285,6 +305,7 @@ class SurgicalController extends Controller
         $extension = strtolower($file->getClientOriginalExtension());
             $mediaItems = $surgical->getMedia()->count() + 1;
             $filename = $patient_uuid . "_". $mediaItems;
+            $filename = str_replace("/", "", $filename);
             $file->move(public_path('media/'),$filename . '.' . $extension);
         
         $pathToFile  =  public_path('media/').$filename . '.' . $extension;
@@ -292,6 +313,10 @@ class SurgicalController extends Controller
                  //->toMediaLibrary();
 
         }
+
+        } catch(Exception $e) {
+
+}
 
         return redirect()->route('surgical.index', ['patient' => $patient]);
     }

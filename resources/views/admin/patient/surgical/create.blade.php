@@ -11,9 +11,16 @@
     {!! Form::open(['url' => route('surgical.store', ['patient' => $patient->id]),  'role' => 'form', 'class' => 'form-horizontal', 'files' => true]) !!}
     <div class="panel panel-default">
         <div class="panel-heading clearfix">
-            <span class="pull-left"><h4>Add Surgical</h4></span>
+            <span class="pull-left"><h4>Add Surgical</h4>
+            </span>
             <span class="pull-right">
                 <a class="ui small button" href="{{ route('surgical.index', ['patient' => $patient->id]) }}">Back</a>
+                    <a ng-href="{{ route('subsurgery.index') }}" class="button ui big blue labeled icon">
+                <i class="icon list"></i>Add subsurgery
+            </a>  
+                                        <a ng-href="{{ route('drug.index') }}" class="button ui big blue labeled icon">
+                <i class="icon list"></i>Add surgery
+            </a>  
             </span>
         </div>
         <div class="panel-body">

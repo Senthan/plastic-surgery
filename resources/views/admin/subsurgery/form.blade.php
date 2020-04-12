@@ -12,7 +12,7 @@
 <div class="form-group {{ ($errors->has('surgery')) ? 'has-error' : '' }}">
     {!! Form::label('surgery', 'Surgery', ['class' => 'col-sm-2 control-label']) !!}
     <div class="col-sm-10">
-        {!! Form::select('surgery[]', $drugs, null, ['class' => 'form-control', 'multiple']) !!}
+        {!! Form::select('surgery[]', $drugs, $surgery, ['class' => 'form-control', 'multiple']) !!}
         <p class="help-block">{{ ($errors->has('surgery') ? $errors->first('surgery') : '') }}</p>
     </div>
 </div>

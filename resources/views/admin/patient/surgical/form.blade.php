@@ -16,6 +16,7 @@
     {!! Form::label('surgery_sub_category', 'Surgery sub category', ['class' => 'col-md-2 control-label']) !!}
     <div class="col-md-6">
         {!! Form::select('surgery_sub_category', $surgery_sub_category, null, ['class' => 'form-control']) !!}
+
         <p class="help-block">{!! ($errors->has('surgery_sub_category') ? $errors->first('surgery_sub_category') : '') !!}</p>
     </div>
 </div>
@@ -28,7 +29,8 @@
         <p class="help-block">{{ ($errors->has('surgery') ? $errors->first('surgery') : '') }}</p>
     </div>
 </div>
-          
+    
+
 
 <!-- <div class="form-group {{ ($errors->has('surgery')) ? 'has-error' : '' }} required">
     {!! Form::label('surgery', 'Name of the surgery', ['class' => 'col-md-2 control-label']) !!}

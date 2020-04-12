@@ -38,7 +38,8 @@ class SubSurgeryController extends Controller
     {
         $drugs = Drug::lists('name', 'name');
         $dose = Dose::lists('dose', 'id');
-        return view('admin.subsurgery.create', compact('drugs', 'dose'));
+        $surgery = collect([]);
+        return view('admin.subsurgery.create', compact('drugs', 'dose', 'surgery'));
     }
 
     public function store(Request $request)
@@ -54,15 +55,17 @@ class SubSurgeryController extends Controller
     {
         $drugs = Drug::lists('name', 'name');
         $sub_surgery = $subSurgery->sub_surgery;
-        return view('admin.subsurgery.edit', compact('subSurgery', 'drugs', 'sub_surgery'));
+        $surgery = json_decode($subSurgery->surgery);
+        return view('admin.subsurgery.edit', compact('subSurgery', 'drugs', 'sub_surgery', 'surgery'));
     }
 
     public function update(Request $request)
     {
         $subSurgery = SubSurgery::firstOrCreate(['sub_surgery' => $request->sub_surgery]);
-        $surgery = $subSurgery->surgery ? json_decode($subSurgery->surgery,true) : [];
-        $surgery_merge = json_encode(array_unique(array_merge($surgery, $request->surgery)));
-        $subSurgery->surgery = $surgery_merge;
+        //$surgery = $subSurgery->surgery ? json_decode($subSurgery->surgery,true) : [];
+        //$surgery_merge = json_encode(array_unique(array_merge($surgery, $request->surgery)));
+        //$subSurgery->surgery = $surgery_merge;
+        $subSurgery->surgery = json_encode($request->surgery);
         $subSurgery->save();
         return redirect()->route('subsurgery.index')->with('message', 'SubSurgery was successfully updated!');
     }
